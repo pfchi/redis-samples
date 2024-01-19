@@ -1,0 +1,23 @@
+﻿@page
+@using System.Collections
+@model IndexModel
+
+<h4>Environment Variables</h4>
+<hr />
+@{
+
+    var envVars = Environment.GetEnvironmentVariables().Keys;
+
+    foreach (var env in envVars)
+    {
+
+        <div class="mb-3 row">
+            <label for="@env" class="col-sm-4 col-form-label">@env</label>
+            <div class="col-sm-8">
+                <input type="text" readonly class="form-control-plaintext" id="@env" value="@Environment.GetEnvironmentVariable(env.ToString())">
+            </div>
+        </div>
+    }
+} 
+
+

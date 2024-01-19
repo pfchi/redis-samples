@@ -1,0 +1,30 @@
+version: '3.8'
+name: redis_sample
+services:
+  ap1:
+    build: ./webapp
+    environment:
+      - APNAME=AP1
+      - REDIS_ON=${REDIS_ON}
+    ports:
+      - 8801:8080
+  ap2:
+    build: ./webapp
+    environment:
+      - APNAME=AP2
+      - REDIS_ON=${REDIS_ON}
+    ports:
+      - 8802:8080
+  ingress:
+    image: "nginx"
+    ports:
+      - "8800:80"
+    volumes:
+      - type: bind
+        source : ./nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+  redis:
+    image: redis/redis-stack:6.2.6-v9
+    #ports:
+    #expose:
+      #- "6379:6379"

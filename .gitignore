@@ -1,0 +1,16 @@
+# .NET 建置產物
+bin/
+obj/
+.vs/
+*.user
+
+# BenchmarkDotNet 基準測試結果
+BenchmarkDotNet.Artifacts/
+
+# sql 範例執行時產生的 SQLite 資料庫
+*.db
+
+.DS_Store
+
+# Claude Code 工作紀錄
+.claude/

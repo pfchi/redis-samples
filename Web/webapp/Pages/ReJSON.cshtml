@@ -1,0 +1,86 @@
+﻿@page
+@model webapp.Pages.ReJSONModel
+@{
+}
+
+
+<h4>ReJSON Test</h4>
+<hr />
+<div class="row my-5">
+    <div class="col-md-4">
+        <form method="post" asp-page="ReJSON" asp-page-handler="QueryId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="QueryId" class="control-label"></label>
+                <div class="input-group">
+
+                    <input asp-for="QueryId" class="form-control" />
+                    <input type="submit" value="查" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+
+        <form method="post" asp-page="ReJSON" asp-page-handler="QueryCat">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="QueryCat" class="control-label"></label>
+                <div class="input-group">
+
+                    <select asp-for="QueryCat" class="form-select">
+                        <option value=""></option>
+                        <option value="資料庫">資料庫</option>
+                        <option value="網際網路">網際網路</option>
+                        <option value="應用系統整合">應用系統整合</option>
+                        <option value="家庭保健">家庭保健</option>
+                        <option value="語言">語言</option>
+                        <option value="管理">管理</option>
+                        <option value="行銷">行銷</option>
+                    </select>
+                    <input type="submit" value="查" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+
+        <form method="post" asp-page="ReJSON" asp-page-handler="QueryKeyWord">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="QueryKeyWord" class="control-label"></label>
+                <div class="input-group">
+
+                    <input asp-for="QueryKeyWord" class="form-control" placeholder="Name,Author,Publisher" />
+                    <input type="submit" value="查" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+<div class="row my-3">
+    <div class="col-md-12">
+        <form method="post" asp-page="ReJSON">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="d-grid gap-2 col-12 mx-auto">
+                <input type="submit" value="查全部" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+<hr />
+@{
+    if (!string.IsNullOrEmpty(Model.QueryResult))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">查詢結果：</label>
+                    <pre>@Model.QueryResult</pre>
+                </div>
+            </div>
+        </div>
+    }
+}

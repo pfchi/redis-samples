@@ -1,0 +1,32 @@
+﻿@page
+@model webapp.Pages.SESSIONModel
+@{
+}
+
+<h4>SESSION Test</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" asp-page="SESSION">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="偷偷說" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    @{
+        if (!string.IsNullOrEmpty(HttpContext.Session.GetString("Message")))
+        {
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">你剛剛說：</label>
+                    @HttpContext.Session.GetString("Message")
+                </div>
+            </div>
+        }
+    }
+</div>
